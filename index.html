@@ -1,1215 +1,2467 @@
-```html
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Sulo Rakentaja — Remontti- ja asennustyöt Uudellamaalla</title>
-
-  <meta
-    name="description"
-    content="Sulo Rakentaja tekee pienet ja keskisuuret remontti-, korjaus-, maalaus- ja asennustyöt Vantaalla, Helsingissä, Espoossa ja muualla Uudellamaalla."
-  >
-
-  <meta name="theme-color" content="#111111">
-
-  <style>
-    :root {
-      --black: #111111;
-      --dark: #191919;
-      --white: #ffffff;
-      --cream: #f5f3ee;
-      --light: #f0eee8;
-      --gray: #686868;
-      --line: #dedbd3;
-      --accent: #d9ff3f;
-      --accent-dark: #b9df22;
-      --radius: 22px;
-      --max: 1180px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
-      background: var(--cream);
-      color: var(--black);
-      line-height: 1.5;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(calc(100% - 40px), var(--max));
-      margin: 0 auto;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      color: white;
-    }
-
-    .nav {
-      height: 82px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-    }
-
-    .logo span {
-      font-weight: 400;
-      opacity: 0.7;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .nav-link {
-      font-size: 14px;
-      font-weight: 600;
-      opacity: 0.9;
-    }
-
-    .nav-phone {
-      background: var(--accent);
-      color: var(--black);
-      padding: 11px 17px;
-      border-radius: 100px;
-      font-weight: 800;
-      font-size: 14px;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 760px;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,0.88) 0%,
-          rgba(0,0,0,0.72) 45%,
-          rgba(0,0,0,0.35) 100%
-        ),
-        radial-gradient(circle at 80% 40%, #555 0, #171717 50%, #090909 100%);
-      color: white;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 480px;
-      height: 480px;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 50%;
-      right: -130px;
-      bottom: -170px;
-    }
-
-    .hero-content {
-      padding: 130px 0 80px;
-      max-width: 820px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.16);
-      padding: 8px 13px;
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 26px;
-    }
-
-    .eyebrow-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-
-    h1 {
-      font-size: clamp(48px, 7vw, 82px);
-      line-height: 0.96;
-      letter-spacing: -0.065em;
-      max-width: 850px;
-      margin-bottom: 30px;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    .hero-text {
-      max-width: 650px;
-      font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.5;
-      color: rgba(255,255,255,0.76);
-      margin-bottom: 38px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 56px;
-      padding: 0 24px;
-      border-radius: 100px;
-      font-size: 16px;
-      font-weight: 800;
-      transition: 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--black);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-dark);
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.25);
-      color: white;
-      background: rgba(255,255,255,0.06);
-    }
-
-    .hero-note {
-      margin-top: 18px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
-    }
-
-    /* =========================
-       TRUST BAR
-    ========================= */
-
-    .trust {
-      background: var(--accent);
-      color: var(--black);
-    }
-
-    .trust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      min-height: 110px;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-      font-weight: 800;
-      font-size: 15px;
-      border-right: 1px solid rgba(0,0,0,0.12);
-    }
-
-    .trust-item:last-child {
-      border-right: 0;
-    }
-
-    /* =========================
-       PROBLEM
-    ========================= */
-
-    section {
-      padding: 110px 0;
-    }
-
-    .problem {
-      background: var(--white);
-    }
-
-    .section-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-weight: 900;
-      color: var(--gray);
-      margin-bottom: 18px;
-    }
-
-    .section-title {
-      font-size: clamp(36px, 5vw, 60px);
-      line-height: 1;
-      letter-spacing: -0.055em;
-      max-width: 760px;
-      margin-bottom: 25px;
-    }
-
-    .section-text {
-      max-width: 650px;
-      color: var(--gray);
-      font-size: 18px;
-    }
-
-    .problem-grid {
-      margin-top: 55px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .problem-card {
-      background: var(--cream);
-      border-radius: var(--radius);
-      padding: 30px;
-      min-height: 220px;
-    }
-
-    .problem-number {
-      font-size: 13px;
-      font-weight: 900;
-      color: var(--gray);
-      margin-bottom: 55px;
-    }
-
-    .problem-card h3 {
-      font-size: 23px;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 10px;
-    }
-
-    .problem-card p {
-      color: var(--gray);
-      font-size: 15px;
-    }
-
-    /* =========================
-       SERVICES
-    ========================= */
-
-    .services {
-      background: var(--cream);
-    }
-
-    .services-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 30px;
-      margin-bottom: 55px;
-    }
-
-    .services-header .section-title {
-      margin-bottom: 0;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .service {
-      background: white;
-      border-radius: 18px;
-      padding: 26px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      border: 1px solid transparent;
-      transition: 0.2s ease;
-    }
-
-    .service:hover {
-      border-color: var(--line);
-      transform: translateY(-2px);
-    }
-
-    .service-name {
-      font-size: 19px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .service-description {
-      color: var(--gray);
-      font-size: 14px;
-      margin-top: 4px;
-    }
-
-    .service-arrow {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: var(--black);
-      color: white;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      font-size: 18px;
-    }
-
-    /* =========================
-       HOW IT WORKS
-    ========================= */
-
-    .process {
-      background: var(--black);
-      color: white;
-    }
-
-    .process .section-label {
-      color: rgba(255,255,255,0.45);
-    }
-
-    .process .section-text {
-      color: rgba(255,255,255,0.6);
-    }
-
-    .process-grid {
-      margin-top: 60px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .process-step {
-      background: var(--black);
-      padding: 38px;
-      min-height: 300px;
-    }
-
-    .step-number {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: var(--black);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 75px;
-    }
-
-    .process-step h3 {
-      font-size: 25px;
-      margin-bottom: 12px;
-      letter-spacing: -0.03em;
-    }
-
-    .process-step p {
-      color: rgba(255,255,255,0.58);
-      font-size: 15px;
-      max-width: 300px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-      background: white;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-photo {
-      min-height: 520px;
-      background:
-        linear-gradient(135deg, #ddd8cc, #a5a095);
-      border-radius: 28px;
-      display: grid;
-      place-items: center;
-      color: rgba(0,0,0,0.45);
-      font-weight: 800;
-      text-align: center;
-      padding: 30px;
-    }
-
-    .about-content h2 {
-      font-size: clamp(38px, 5vw, 62px);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-      margin-bottom: 25px;
-    }
-
-    .about-content > p {
-      color: var(--gray);
-      font-size: 18px;
-      margin-bottom: 30px;
-      max-width: 600px;
-    }
-
-    .about-points {
-      display: grid;
-      gap: 14px;
-    }
-
-    .about-point {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
-
-    .check {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--accent);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      flex-shrink: 0;
-      font-size: 13px;
-    }
-
-    .about-point strong {
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .about-point span {
-      color: var(--gray);
-      font-size: 14px;
-    }
-
-    /* =========================
-       CTA
-    ========================= */
-
-    .cta {
-      background: var(--accent);
-      color: var(--black);
-      padding: 100px 0;
-    }
-
-    .cta-inner {
-      display: grid;
-      grid-template-columns: 1fr 0.8fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .cta h2 {
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 0.96;
-      letter-spacing: -0.06em;
-      margin-bottom: 25px;
-    }
-
-    .cta p {
-      font-size: 18px;
-      max-width: 600px;
-    }
-
-    .contact-card {
-      background: var(--black);
-      color: white;
-      border-radius: 24px;
-      padding: 30px;
-    }
-
-    .contact-card-title {
-      font-size: 14px;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 20px;
-    }
-
-    .contact-option {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .contact-option:last-child {
-      border-bottom: 0;
-    }
-
-    .contact-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .contact-option small {
-      display: block;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 2px;
-    }
-
-    .contact-option strong {
-      font-size: 16px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: var(--black);
-      color: white;
-      padding: 35px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .footer-logo {
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    .footer-text {
-      color: rgba(255,255,255,0.45);
-      font-size: 13px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      .container {
-        width: min(calc(100% - 28px), var(--max));
-      }
-
-      .nav {
-        height: 70px;
-      }
-
-      .nav-link {
-        display: none;
-      }
-
-      .nav-phone {
-        padding: 9px 13px;
-        font-size: 13px;
-      }
-
-      .hero {
-        min-height: 720px;
-      }
-
-      .hero-content {
-        padding: 120px 0 70px;
-      }
-
-      h1 {
-        font-size: clamp(45px, 13vw, 65px);
-      }
-
-      .hero-text {
-        font-size: 17px;
-      }
-
-      .hero-actions {
-        display: grid;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .trust-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .trust-item:nth-child(2) {
-        border-right: 0;
-      }
-
-      .trust-item:nth-child(-n+2) {
-        border-bottom: 1px solid rgba(0,0,0,0.12);
-      }
-
-      section {
-        padding: 75px 0;
-      }
-
-      .problem-grid,
-      .services-grid,
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .problem-card {
-        min-height: auto;
-      }
-
-      .problem-number {
-        margin-bottom: 30px;
-      }
-
-      .services-header {
-        display: block;
-      }
-
-      .services-header .section-text {
-        margin-top: 20px;
-      }
-
-      .about-grid,
-      .cta-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .about-photo {
-        min-height: 380px;
-      }
-
-      .process-step {
-        min-height: auto;
-      }
-
-      .step-number {
-        margin-bottom: 45px;
-      }
-
-      .footer-inner {
-        display: block;
-      }
-
-      .footer-text {
-        margin-top: 10px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition: none !important;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Sulo Rakentaja | Remontti, korjaus ja asennus Uudellamaalla
+    </title>
+
+    <meta
+        name="description"
+        content="Sulo Rakentaja tarjoaa pienet ja keskisuuret remontti-, korjaus-, maalaus- ja asennustyöt Vantaalla, Helsingissä, Espoossa ja muualla Uudellamaalla."
+    >
+
+    <meta
+        name="theme-color"
+        content="#090909"
+    >
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #090909;
+            color: #ffffff;
+
+            line-height: 1.5;
+
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =====================================================
+           COLORS
+        ===================================================== */
+
+        :root {
+            --black: #090909;
+            --dark: #111111;
+            --dark-2: #181818;
+
+            --white: #ffffff;
+            --gray: #a5a5a5;
+            --gray-light: #d5d5d5;
+
+            --yellow: #d9ff00;
+            --yellow-dark: #bddd00;
+
+            --border: rgba(255,255,255,0.10);
+
+            --container: 1180px;
+
+            --radius: 20px;
+        }
+
+
+        /* =====================================================
+           GENERAL
+        ===================================================== */
+
+        .container {
+            width: min(
+                calc(100% - 40px),
+                var(--container)
+            );
+
+            margin: 0 auto;
+        }
+
+        .yellow {
+            color: var(--yellow);
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 100;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.60),
+                    transparent
+                );
+        }
+
+        .nav {
+            min-height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border:
+                2px solid var(--yellow);
+
+            background: #000;
+        }
+
+        .brand-name {
+            display: flex;
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+        .brand-name strong {
+            font-size: 20px;
+
+            letter-spacing: -0.04em;
+        }
+
+        .brand-name span {
+            margin-top: 5px;
+
+            color: var(--yellow);
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 0.12em;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+
+            gap: 30px;
+
+            color: rgba(255,255,255,0.75);
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .nav-menu a {
+            transition: color .2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--yellow);
+        }
+
+        .nav-phone {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 45px;
+
+            padding: 0 17px;
+
+            border-radius: 9px;
+
+            background: var(--yellow);
+
+            color: #000;
+
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .nav-phone:hover {
+            background: var(--yellow-dark);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            position: relative;
+
+            min-height: 810px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background: var(--black);
+        }
+
+        .hero-image {
+            position: absolute;
+
+            top: 0;
+            right: 0;
+
+            width: 62%;
+            height: 100%;
+
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: 52% center;
+        }
+
+        .hero-image::before {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 2;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #090909 0%,
+                    rgba(9,9,9,0.97) 10%,
+                    rgba(9,9,9,0.80) 27%,
+                    rgba(9,9,9,0.28) 58%,
+                    rgba(9,9,9,0.04) 100%
+                );
+        }
+
+        .hero-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 3;
+
+            background:
+                linear-gradient(
+                    0deg,
+                    rgba(0,0,0,0.60),
+                    transparent 35%,
+                    rgba(0,0,0,0.15)
+                );
+        }
+
+        .hero-content {
+            position: relative;
+
+            z-index: 10;
+
+            width: 58%;
+
+            padding-top: 100px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 24px;
+
+            color: var(--yellow);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: .09em;
+        }
+
+        .eyebrow-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: var(--yellow);
+
+            box-shadow:
+                0 0 0 5px rgba(217,255,0,0.10);
+        }
+
+        .hero h1 {
+            max-width: 720px;
+
+            margin-bottom: 28px;
+
+            font-size:
+                clamp(52px, 6vw, 82px);
+
+            line-height: .92;
+
+            letter-spacing: -.065em;
+
+            font-weight: 900;
+        }
+
+        .hero-text {
+            max-width: 610px;
+
+            margin-bottom: 30px;
+
+            color: rgba(255,255,255,0.72);
+
+            font-size: 17px;
+
+            line-height: 1.65;
+        }
+
+        .hero-text strong {
+            color: #fff;
+        }
+
+
+        /* =====================================================
+           HERO BUTTONS
+        ===================================================== */
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .button {
+            min-height: 58px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 11px;
+
+            padding: 0 21px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                border-color .2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-main {
+            min-width: 265px;
+
+            background: var(--yellow);
+
+            color: #000;
+        }
+
+        .button-main:hover {
+            background: var(--yellow-dark);
+        }
+
+        .button-whatsapp {
+            min-width: 170px;
+
+            border:
+                1px solid rgba(255,255,255,0.30);
+
+            background:
+                rgba(0,0,0,0.35);
+
+            color: #fff;
+        }
+
+        .button-whatsapp:hover {
+            border-color: var(--yellow);
+
+            background:
+                rgba(217,255,0,0.08);
+        }
+
+        .button-icon {
+            font-size: 19px;
+        }
+
+        .hero-small {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 18px;
+
+            color: rgba(255,255,255,0.55);
+
+            font-size: 11px;
+        }
+
+        .hero-small span {
+            display: flex;
+            align-items: center;
+
+            gap: 6px;
+        }
+
+        .hero-small span::before {
+            content: "✓";
+
+            display: grid;
+            place-items: center;
+
+            width: 17px;
+            height: 17px;
+
+            border:
+                1px solid rgba(217,255,0,0.50);
+
+            border-radius: 50%;
+
+            color: var(--yellow);
+
+            font-size: 9px;
+            font-weight: 900;
+        }
+
+        .area {
+            margin-top: 30px;
+
+            color: rgba(255,255,255,0.60);
+
+            font-size: 13px;
+        }
+
+        .area strong {
+            color: var(--yellow);
+        }
+
+
+        /* =====================================================
+           TRUST
+        ===================================================== */
+
+        .trust {
+            position: relative;
+
+            z-index: 20;
+
+            margin-top: -50px;
+        }
+
+        .trust-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            overflow: hidden;
+
+            border:
+                1px solid rgba(217,255,0,0.24);
+
+            border-radius: var(--radius);
+
+            background:
+                rgba(18,18,18,0.95);
+
+            backdrop-filter: blur(15px);
+        }
+
+        .trust-item {
+            min-height: 105px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 20px;
+
+            border-right:
+                1px solid var(--border);
+        }
+
+        .trust-item:last-child {
+            border-right: 0;
+        }
+
+        .trust-icon {
+            width: 42px;
+            height: 42px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border:
+                1px solid rgba(217,255,0,0.45);
+
+            border-radius: 50%;
+
+            color: var(--yellow);
+
+            font-size: 17px;
+        }
+
+        .trust-item strong {
+            display: block;
+
+            margin-bottom: 3px;
+
+            font-size: 13px;
+        }
+
+        .trust-item span {
+            color: rgba(255,255,255,0.50);
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
+        .section {
+            padding: 110px 0;
+        }
+
+        .section-label {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 18px;
+
+            color: var(--yellow);
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: .10em;
+            text-transform: uppercase;
+        }
+
+        .section-label::before {
+            content: "";
+
+            width: 30px;
+            height: 2px;
+
+            background: var(--yellow);
+        }
+
+        .section-title {
+            max-width: 760px;
+
+            margin-bottom: 22px;
+
+            font-size:
+                clamp(40px, 5vw, 62px);
+
+            line-height: .98;
+
+            letter-spacing: -.055em;
+
+            font-weight: 900;
+        }
+
+        .section-description {
+            max-width: 650px;
+
+            color: var(--gray);
+
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        #palvelut {
+            background: var(--black);
+        }
+
+        .services-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 14px;
+
+            margin-top: 50px;
+        }
+
+        .service {
+            min-height: 185px;
+
+            padding: 26px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #181818,
+                    #101010
+                );
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-4px);
+
+            border-color:
+                rgba(217,255,0,0.40);
+        }
+
+        .service-icon {
+            width: 44px;
+            height: 44px;
+
+            display: grid;
+            place-items: center;
+
+            margin-bottom: 24px;
+
+            border:
+                1px solid rgba(217,255,0,0.28);
+
+            border-radius: 10px;
+
+            color: var(--yellow);
+
+            background:
+                rgba(217,255,0,0.05);
+
+            font-size: 19px;
+        }
+
+        .service h3 {
+            margin-bottom: 7px;
+
+            font-size: 18px;
+        }
+
+        .service p {
+            color: var(--gray);
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           PROCESS
+        ===================================================== */
+
+        #miten {
+            background:
+                linear-gradient(
+                    180deg,
+                    #111,
+                    #090909
+                );
+        }
+
+        .process-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            margin-top: 55px;
+
+            overflow: hidden;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: var(--radius);
+        }
+
+        .process {
+            min-height: 290px;
+
+            padding: 32px;
+
+            border-right:
+                1px solid var(--border);
+        }
+
+        .process:last-child {
+            border-right: 0;
+        }
+
+        .number {
+            width: 45px;
+            height: 45px;
+
+            display: grid;
+            place-items: center;
+
+            margin-bottom: 65px;
+
+            border-radius: 50%;
+
+            background: var(--yellow);
+
+            color: #000;
+
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .process h3 {
+            margin-bottom: 10px;
+
+            font-size: 22px;
+        }
+
+        .process p {
+            max-width: 300px;
+
+            color: var(--gray);
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           ABOUT
+        ===================================================== */
+
+        #sulosta {
+            background: #f2f2ef;
+
+            color: #090909;
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns:
+                .85fr 1.15fr;
+
+            gap: 75px;
+
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+
+            height: 570px;
+
+            overflow: hidden;
+
+            border-radius: 25px;
+
+            background: #111;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+        }
+
+        .about-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    0deg,
+                    rgba(0,0,0,0.70),
+                    transparent 50%
+                );
+        }
+
+        .about-label {
+            position: absolute;
+
+            left: 22px;
+            bottom: 22px;
+
+            z-index: 5;
+
+            padding: 12px 16px;
+
+            border-radius: 9px;
+
+            background:
+                rgba(0,0,0,0.75);
+
+            color: #fff;
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .about-content .section-label {
+            color: #718400;
+        }
+
+        .about-content .section-label::before {
+            background: #718400;
+        }
+
+        .about-content h2 {
+            max-width: 650px;
+
+            margin-bottom: 24px;
+
+            font-size:
+                clamp(40px, 5vw, 62px);
+
+            line-height: .97;
+
+            letter-spacing: -.06em;
+        }
+
+        .about-content > p {
+            max-width: 610px;
+
+            margin-bottom: 30px;
+
+            color: #666;
+
+            font-size: 16px;
+        }
+
+        .about-list {
+            display: grid;
+
+            gap: 14px;
+        }
+
+        .about-item {
+            display: flex;
+
+            gap: 12px;
+        }
+
+        .about-check {
+            width: 25px;
+            height: 25px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background: #090909;
+
+            color: var(--yellow);
+
+            font-size: 11px;
+            font-weight: 900;
+        }
+
+        .about-item strong {
+            display: block;
+
+            margin-bottom: 2px;
+
+            font-size: 14px;
+        }
+
+        .about-item span {
+            color: #777;
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        #yhteys {
+            padding: 95px 0;
+
+            background: var(--yellow);
+
+            color: #090909;
+        }
+
+        .contact-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr .75fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+        .contact-title {
+            max-width: 720px;
+
+            margin-bottom: 22px;
+
+            font-size:
+                clamp(44px, 6vw, 72px);
+
+            line-height: .95;
+
+            letter-spacing: -.06em;
+        }
+
+        .contact-text {
+            max-width: 600px;
+
+            font-size: 17px;
+        }
+
+        .contact-card {
+            padding: 24px;
+
+            border-radius: 20px;
+
+            background: #0b0b0b;
+
+            color: #fff;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.20);
+        }
+
+        .contact-card-title {
+            margin-bottom: 8px;
+
+            color: rgba(255,255,255,0.45);
+
+            font-size: 11px;
+
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.10);
+        }
+
+        .contact-link:last-child {
+            border-bottom: 0;
+        }
+
+        .contact-link:hover {
+            color: var(--yellow);
+        }
+
+        .contact-icon {
+            width: 43px;
+            height: 43px;
+
+            flex-shrink: 0;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.09);
+
+            font-size: 17px;
+        }
+
+        .contact-link small {
+            display: block;
+
+            margin-bottom: 2px;
+
+            color: rgba(255,255,255,0.40);
+
+            font-size: 10px;
+        }
+
+        .contact-link strong {
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 32px 0;
+
+            background: #070707;
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            font-weight: 900;
+        }
+
+        .footer-logo {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid var(--yellow);
+
+            object-fit: cover;
+        }
+
+        .footer-text {
+            color: #666;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           MOBILE CONTACT BAR
+        ===================================================== */
+
+        .mobile-bar {
+            display: none;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                width: 70%;
+            }
+
+            .hero-image {
+                width: 100%;
+            }
+
+            .trust-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .trust-item:nth-child(2) {
+                border-right: 0;
+            }
+
+            .trust-item:nth-child(-n+2) {
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+            .services-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            body {
+                padding-bottom: 76px;
+            }
+
+            .container {
+                width:
+                    calc(100% - 28px);
+            }
+
+            .nav {
+                min-height: 72px;
+            }
+
+            .brand-logo {
+                width: 44px;
+                height: 44px;
+            }
+
+            .brand-name strong {
+                font-size: 17px;
+            }
+
+            .brand-name span {
+                font-size: 9px;
+            }
+
+            .nav-phone {
+                min-height: 40px;
+
+                padding: 0 11px;
+
+                font-size: 11px;
+            }
+
+
+            /* HERO */
+
+            .hero {
+                min-height: 850px;
+
+                align-items: flex-end;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: 72%;
+            }
+
+            .hero-image img {
+                object-position: 52% center;
+            }
+
+            .hero-image::before {
+                background:
+                    linear-gradient(
+                        180deg,
+                        #090909 0%,
+                        rgba(9,9,9,0.88) 18%,
+                        rgba(9,9,9,0.35) 55%,
+                        rgba(9,9,9,0.12) 100%
+                    );
+            }
+
+            .hero-content {
+                width: 100%;
+
+                padding-top: 100px;
+                padding-bottom: 85px;
+            }
+
+            .eyebrow {
+                font-size: 9px;
+
+                margin-bottom: 18px;
+            }
+
+            .hero h1 {
+                margin-bottom: 20px;
+
+                font-size:
+                    clamp(44px, 13vw, 64px);
+            }
+
+            .hero-text {
+                margin-bottom: 24px;
+
+                font-size: 14px;
+
+                line-height: 1.55;
+            }
+
+            .hero-buttons {
+                display: grid;
+
+                width: 100%;
+            }
+
+            .button {
+                width: 100%;
+
+                min-height: 55px;
+            }
+
+            .button-main,
+            .button-whatsapp {
+                min-width: 0;
+            }
+
+            .hero-small {
+                gap: 10px 14px;
+
+                font-size: 10px;
+            }
+
+            .area {
+                margin-top: 22px;
+
+                font-size: 11px;
+            }
+
+
+            /* TRUST */
+
+            .trust {
+                margin-top: 0;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+
+                border-radius: 15px;
+            }
+
+            .trust-item {
+                min-height: 78px;
+
+                border-right: 0 !important;
+
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+            .trust-item:last-child {
+                border-bottom: 0;
+            }
+
+
+            /* SECTIONS */
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .section-title {
+                font-size:
+                    clamp(36px, 11vw, 51px);
+            }
+
+            .section-description {
+                font-size: 14px;
+            }
+
+
+            /* SERVICES */
+
+            .services-grid {
+                grid-template-columns: 1fr;
+
+                margin-top: 38px;
+            }
+
+            .service {
+                min-height: 150px;
+            }
+
+
+            /* PROCESS */
+
+            .process-grid {
+                grid-template-columns: 1fr;
+
+                margin-top: 40px;
+            }
+
+            .process {
+                min-height: 220px;
+
+                border-right: 0;
+
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+            .process:last-child {
+                border-bottom: 0;
+            }
+
+            .number {
+                margin-bottom: 42px;
+            }
+
+
+            /* ABOUT */
+
+            .about-image {
+                height: 440px;
+            }
+
+            .about-content h2 {
+                font-size:
+                    clamp(39px, 12vw, 54px);
+            }
+
+
+            /* CONTACT */
+
+            #yhteys {
+                padding: 70px 0;
+            }
+
+            .contact-title {
+                font-size:
+                    clamp(42px, 13vw, 58px);
+            }
+
+            .contact-text {
+                font-size: 15px;
+            }
+
+
+            /* FOOTER */
+
+            .footer-inner {
+                display: block;
+            }
+
+            .footer-text {
+                margin-top: 10px;
+            }
+
+
+            /* MOBILE BAR */
+
+            .mobile-bar {
+                position: fixed;
+
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+
+                z-index: 999;
+
+                display: grid;
+
+                grid-template-columns:
+                    1.2fr 1fr 1fr;
+
+                gap: 6px;
+
+                padding: 7px;
+
+                border:
+                    1px solid rgba(217,255,0,0.25);
+
+                border-radius: 15px;
+
+                background:
+                    rgba(15,15,15,0.95);
+
+                backdrop-filter: blur(15px);
+
+                box-shadow:
+                    0 15px 40px rgba(0,0,0,0.45);
+            }
+
+            .mobile-button {
+                min-height: 48px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                border-radius: 9px;
+
+                font-size: 10px;
+                font-weight: 900;
+
+                text-align: center;
+            }
+
+            .mobile-button.email {
+                background: var(--yellow);
+
+                color: #000;
+            }
+
+            .mobile-button.whatsapp,
+            .mobile-button.facebook {
+                background: #222;
+
+                color: #fff;
+            }
+        }
+
+    </style>
 </head>
+
 
 <body>
 
-<header>
-  <div class="container nav">
-    <a href="#" class="logo">
-      Sulo <span>– Rakentaja</span>
-    </a>
 
-    <div class="nav-right">
-      <a href="#palvelut" class="nav-link">Palvelut</a>
-      <a href="#miten" class="nav-link">Näin se toimii</a>
-      <a href="#yhteys" class="nav-phone">041 314 3493</a>
-    </div>
-  </div>
-</header>
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+    <header>
+
+        <div class="container nav">
+
+            <a
+                href="#top"
+                class="brand"
+            >
+
+                <img
+                    src="Logo.jpeg"
+                    alt="Sulo Rakentaja logo"
+                    class="brand-logo"
+                >
+
+                <div class="brand-name">
+
+                    <strong>
+                        SULO
+                    </strong>
+
+                    <span>
+                        RAKENTAJA
+                    </span>
+
+                </div>
+
+            </a>
 
 
-<main>
+            <nav class="nav-menu">
 
-  <!-- HERO -->
+                <a href="#palvelut">
+                    Palvelut
+                </a>
 
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
+                <a href="#miten">
+                    Näin se toimii
+                </a>
 
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          Vantaa · Helsinki · Espoo · Uusimaa
+                <a href="#sulosta">
+                    Miksi minä
+                </a>
+
+                <a href="#yhteys">
+                    Yhteys
+                </a>
+
+            </nav>
+
+
+            <a
+                href="tel:+358413143493"
+                class="nav-phone"
+            >
+                ☎ 041 314 3493
+            </a>
+
         </div>
 
-        <h1>
-          Monta pientä työtä?
-          <span>Yksi tekijä riittää.</span>
-        </h1>
+    </header>
 
-        <p class="hero-text">
-          Olen Sulo. Hoidan kodin pienet ja keskisuuret
-          remontti-, korjaus-, maalaus- ja asennustyöt
-          huolellisesti, siististi ja ilman turhaa säätämistä.
-        </p>
 
-        <div class="hero-actions">
-          <a href="mailto:sulorakentaja@gmail.com?subject=Työpyyntö%20-%20Sulo%20Rakentaja"
-             class="btn btn-primary">
-            Lähetä kuva ja kerro ongelmasta →
-          </a>
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
 
-          <a href="tel:+358413143493" class="btn btn-secondary">
-            041 314 3493
-          </a>
-        </div>
+    <main id="top">
 
-        <p class="hero-note">
-          Voit lähettää kuvan kohteesta. Arviointi ja tarjous ovat maksuttomia.
-        </p>
+        <section class="hero">
 
-      </div>
-    </div>
-  </section>
 
+            <div class="hero-image">
 
-  <!-- TRUST -->
+                <img
+                    src="1.jpeg"
+                    alt="Sulo Rakentaja"
+                    fetchpriority="high"
+                >
 
-  <div class="trust">
-    <div class="container trust-grid">
-
-      <div class="trust-item">
-        Yksi tekijä<br>monelle työlle
-      </div>
-
-      <div class="trust-item">
-        Siisti<br>työnjälki
-      </div>
-
-      <div class="trust-item">
-        Joustava<br>ja nopea
-      </div>
-
-      <div class="trust-item">
-        Maksuton<br>arviointi
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- PROBLEM -->
-
-  <section class="problem">
-    <div class="container">
-
-      <div class="section-label">Kuulostaako tutulta?</div>
-
-      <h2 class="section-title">
-        Kotiin on kertynyt asioita,
-        joita ei koskaan ehdi tehdä.
-      </h2>
-
-      <p class="section-text">
-        Hylly pitäisi asentaa. Seinät maalata. Huonekalu koota.
-        Lattia korjata. TV kiinnittää. Keittiössä olisi pieniä
-        viimeistelytöitä. Ja lista vain kasvaa.
-      </p>
-
-      <div class="problem-grid">
-
-        <div class="problem-card">
-          <div class="problem-number">01</div>
-          <h3>Et tarvitse montaa mestaria.</h3>
-          <p>
-            Monen erilaisen työn sijaan voit hoitaa asiat
-            yhden tekijän kanssa.
-          </p>
-        </div>
-
-        <div class="problem-card">
-          <div class="problem-number">02</div>
-          <h3>Ei tarvitse aloittaa puhelinsoitolla.</h3>
-          <p>
-            Kerro tilanteesta viestillä ja lähetä kuva.
-            Vastaan ja arvioin, miten työ kannattaa hoitaa.
-          </p>
-        </div>
-
-        <div class="problem-card">
-          <div class="problem-number">03</div>
-          <h3>Sinun ei tarvitse tietää oikeaa ratkaisua.</h3>
-          <p>
-            Kuvaa ongelma omin sanoin. Katsotaan yhdessä,
-            mitä tarvitaan.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- SERVICES -->
-
-  <section class="services" id="palvelut">
-    <div class="container">
-
-      <div class="services-header">
-
-        <div>
-          <div class="section-label">Palvelut</div>
-
-          <h2 class="section-title">
-            Pienet ja keskisuuret
-            työt kotiin.
-          </h2>
-        </div>
-
-        <p class="section-text">
-          Jos et ole varma, kuuluuko työ palveluihini,
-          kysy. Kuva kohteesta auttaa arvioinnissa.
-        </p>
-
-      </div>
-
-
-      <div class="services-grid">
-
-        <div class="service">
-          <div>
-            <div class="service-name">Pienremontit</div>
-            <div class="service-description">
-              Kodin pienet korjaus- ja remonttityöt
-            </div>
-          </div>
-          <div class="service-arrow">↗</div>
-        </div>
-
-        <div class="service">
-          <div>
-            <div class="service-name">Maalaus & tasoitus</div>
-            <div class="service-description">
-              Sisämaalaukset ja seinien viimeistely
-            </div>
-          </div>
-          <div class="service-arrow">↗</div>
-        </div>
-
-        <div class="service">
-          <div>
-            <div class="service-name">Huonekalujen kokoaminen</div>
-            <div class="service-description">
-              Kalusteet kasaan ja paikoilleen
-            </div>
-          </div>
-          <div class="service-arrow">↗</div>
-        </div>
-
-        <div class="service">
-          <div>
-            <div class="service-name">Keittiöasennukset</div>
-            <div class="service-description">
-              Keittiön asennus- ja viimeistelytyöt
-            </div>
-          </div>
-          <div class="service-arrow">↗</div>
-        </div>
-
-        <div class="service">
-          <div>
-            <div class="service-name">Lattiatyöt</div>
-            <div class="service-description">
-              Lattioiden asennukset ja korjaukset
-            </div>
-          </div>
-          <div class="service-arrow">↗</div>
-        </div>
-
-        <div class="service">
-          <div>
-            <div class="service-name">Kiinnitykset</div>
-            <div class="service-description">
-              TV:t, hyllyt, verhotangot ja muut kiinnitykset
-            </div>
-          </div>
-          <div class="service-arrow">↗</div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- PROCESS -->
-
-  <section class="process" id="miten">
-    <div class="container">
-
-      <div class="section-label">Näin se toimii</div>
-
-      <h2 class="section-title">
-        Ei lomakkeita.
-        Ei turhaa säätämistä.
-      </h2>
-
-      <p class="section-text">
-        Tee yhteydenotosta mahdollisimman helppo.
-        Sinun tarvitsee vain kertoa, mitä pitäisi tehdä.
-      </p>
-
-
-      <div class="process-grid">
-
-        <div class="process-step">
-          <div class="step-number">1</div>
-
-          <h3>Kerro ongelmasta</h3>
-
-          <p>
-            Kirjoita viestillä omin sanoin,
-            mitä kotona pitäisi tehdä tai korjata.
-          </p>
-        </div>
-
-
-        <div class="process-step">
-          <div class="step-number">2</div>
-
-          <h3>Lähetä kuva</h3>
-
-          <p>
-            Jos mahdollista, lisää kuva kohteesta.
-            Se auttaa minua ymmärtämään tilanteen nopeasti.
-          </p>
-        </div>
-
-
-        <div class="process-step">
-          <div class="step-number">3</div>
-
-          <h3>Minä vastaan</h3>
-
-          <p>
-            Kerron, miten asia voidaan hoitaa,
-            ja sovimme työn etenemisestä.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ABOUT -->
-
-  <section class="about">
-    <div class="container">
-
-      <div class="about-grid">
-
-        <div class="about-photo">
-          Tähän voidaan lisätä<br>
-          Sulo kuva työssä
-        </div>
-
-
-        <div class="about-content">
-
-          <div class="section-label">Sulo – Rakentaja</div>
-
-          <h2>
-            Yksi kokenut tekijä.
-            Selkeä homma.
-          </h2>
-
-          <p>
-            Teen sovitut työt huolellisesti ja joustavasti.
-            Minulle tärkeää on, että työ tehdään kunnolla,
-            työympäristö pysyy siistinä ja lopputulos kestää.
-          </p>
-
-          <div class="about-points">
-
-            <div class="about-point">
-              <div class="check">✓</div>
-              <div>
-                <strong>Huolellinen työnjälki</strong>
-                <span>Työ tehdään siististi ja sovitusti.</span>
-              </div>
             </div>
 
-            <div class="about-point">
-              <div class="check">✓</div>
-              <div>
-                <strong>Yksi yhteyshenkilö</strong>
-                <span>Sinun ei tarvitse koordinoida montaa tekijää.</span>
-              </div>
+
+            <div class="container">
+
+                <div class="hero-content">
+
+
+                    <div class="eyebrow">
+
+                        <span class="eyebrow-dot"></span>
+
+                        REMONTTI · KORJAUS · MAALAUS · ASENNUS
+
+                    </div>
+
+
+                    <h1>
+
+                        Yksi tekijä.
+
+                        <span class="yellow">
+                            Monta ratkaisua.
+                        </span>
+
+                    </h1>
+
+
+                    <p class="hero-text">
+
+                        Olen <strong>Sulo Rakentaja.</strong>
+
+                        Teen kodin pienet ja keskisuuret
+                        remontti-, korjaus-, maalaus- ja
+                        asennustyöt huolellisesti,
+                        nopeasti ja siististi.
+
+                        <br><br>
+
+                        <strong>
+                            Sinun ei tarvitse etsiä montaa eri
+                            mestaria. Kerro mitä tarvitset –
+                            katsotaan asia kuntoon.
+                        </strong>
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+
+                        <!-- EMAIL -->
+
+                        <a
+                            href="mailto:sulorakentaja@gmail.com?subject=Työpyyntö%20-%20Sulo%20Rakentaja&body=Hei%20Sulo%2C%0A%0AHaluaisin%20kysyä%20apua%20seuraavaan%20työhön%3A%0A%0A%0AAlue%3A%0A%0AVoin%20lisätä%20kuvan%20kohteesta."
+                            class="button button-main"
+                        >
+
+                            <span class="button-icon">
+                                ✉
+                            </span>
+
+                            KERRO ONGELMASTA<br>
+                            JA LÄHETÄ KUVA
+
+                        </a>
+
+
+                        <!-- WHATSAPP -->
+
+                        <a
+                            href="https://wa.me/358413143493?text=Hei%20Sulo!%20Haluaisin%20kysyä%20apua%20remontti-%2C%20korjaus-%20tai%20asennustyöhön.%20Voin%20lähettää%20kuvan%20kohteesta."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="button button-whatsapp"
+                        >
+
+                            <span class="button-icon">
+                                ◉
+                            </span>
+
+                            WHATSAPP
+
+                        </a>
+
+
+                    </div>
+
+
+                    <div class="hero-small">
+
+                        <span>
+                            Maksuton arvio
+                        </span>
+
+                        <span>
+                            Ei sitoutumista
+                        </span>
+
+                        <span>
+                            Nopea vastaus
+                        </span>
+
+                    </div>
+
+
+                    <div class="area">
+
+                        <strong>
+                            Palvelualue:
+                        </strong>
+
+                        Vantaa · Helsinki · Espoo · Uusimaa
+
+                    </div>
+
+
+                </div>
+
             </div>
 
-            <div class="about-point">
-              <div class="check">✓</div>
-              <div>
-                <strong>Joustava palvelu</strong>
-                <span>Kerro tilanteesta – katsotaan yhdessä ratkaisu.</span>
-              </div>
+        </section>
+
+
+        <!-- =================================================
+             TRUST
+        ================================================== -->
+
+        <section class="trust">
+
+            <div class="container trust-grid">
+
+
+                <div class="trust-item">
+
+                    <div class="trust-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Luotettava
+                        </strong>
+
+                        <span>
+                            Sovitut työt tehdään kunnolla.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="trust-item">
+
+                    <div class="trust-icon">
+                        ◷
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Joustava
+                        </strong>
+
+                        <span>
+                            Sovitaan sinulle sopivasti.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="trust-item">
+
+                    <div class="trust-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Siisti työnjälki
+                        </strong>
+
+                        <span>
+                            Huolellinen ja tarkka lopputulos.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="trust-item">
+
+                    <div class="trust-icon">
+                        €
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Maksuton arvio
+                        </strong>
+
+                        <span>
+                            Tarjous ja arviointi maksutta.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
-          </div>
+        </section>
+
+
+        <!-- =================================================
+             SERVICES
+        ================================================== -->
+
+        <section
+            class="section"
+            id="palvelut"
+        >
+
+            <div class="container">
+
+
+                <div class="section-label">
+                    Mitä teen?
+                </div>
+
+
+                <h2 class="section-title">
+
+                    Kotiin tarvittavat
+
+                    <span class="yellow">
+                        työt yhdeltä tekijältä.
+                    </span>
+
+                </h2>
+
+
+                <p class="section-description">
+
+                    Jos et ole varma kuuluuko työ palveluihini,
+                    kysy rohkeasti. Kuva kohteesta auttaa
+                    arvioimaan työn nopeasti.
+
+                </p>
+
+
+                <div class="services-grid">
+
+
+                    <article class="service">
+
+                        <div class="service-icon">
+                            ⚒
+                        </div>
+
+                        <h3>
+                            Pienremontit
+                        </h3>
+
+                        <p>
+                            Kodin pienet ja keskisuuret
+                            korjaus- ja remonttityöt.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service">
+
+                        <div class="service-icon">
+                            ▱
+                        </div>
+
+                        <h3>
+                            Maalaus & tasoitus
+                        </h3>
+
+                        <p>
+                            Sisämaalaukset ja seinien
+                            tasoitustyöt.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service">
+
+                        <div class="service-icon">
+                            ▣
+                        </div>
+
+                        <h3>
+                            Huonekalujen kokoaminen
+                        </h3>
+
+                        <p>
+                            Kalusteet kasaan ja
+                            paikoilleen.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service">
+
+                        <div class="service-icon">
+                            ▦
+                        </div>
+
+                        <h3>
+                            Keittiöasennukset
+                        </h3>
+
+                        <p>
+                            Keittiöiden asennus- ja
+                            viimeistelytyöt.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service">
+
+                        <div class="service-icon">
+                            ◫
+                        </div>
+
+                        <h3>
+                            Lattia-asennukset
+                        </h3>
+
+                        <p>
+                            Lattioiden asennus- ja
+                            viimeistelytyöt.
+                        </p>
+
+                    </article>
+
+
+                    <article class="service">
+
+                        <div class="service-icon">
+                            ▣
+                        </div>
+
+                        <h3>
+                            Kiinnitykset & asennukset
+                        </h3>
+
+                        <p>
+                            TV:t, hyllyt, verhotangot
+                            ja muut kiinnitykset.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PROCESS
+        ================================================== -->
+
+        <section
+            class="section"
+            id="miten"
+        >
+
+            <div class="container">
+
+
+                <div class="section-label">
+                    Näin se toimii
+                </div>
+
+
+                <h2 class="section-title">
+
+                    Ei tarvitse edes
+
+                    <span class="yellow">
+                        soittaa ensin.
+                    </span>
+
+                </h2>
+
+
+                <p class="section-description">
+
+                    Haluan tehdä yhteydenotosta mahdollisimman
+                    helpon. Kerro ongelmasta, lähetä kuva
+                    ja saat vastauksen.
+
+                </p>
+
+
+                <div class="process-grid">
+
+
+                    <article class="process">
+
+                        <div class="number">
+                            01
+                        </div>
+
+                        <h3>
+                            Kerro ongelmasta
+                        </h3>
+
+                        <p>
+                            Kirjoita omin sanoin mitä pitäisi
+                            tehdä, korjata, asentaa tai maalata.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process">
+
+                        <div class="number">
+                            02
+                        </div>
+
+                        <h3>
+                            Lähetä kuva
+                        </h3>
+
+                        <p>
+                            Lisää kuva kohteesta, jos mahdollista.
+                            Se auttaa ymmärtämään tilanteen nopeasti.
+                        </p>
+
+                    </article>
+
+
+                    <article class="process">
+
+                        <div class="number">
+                            03
+                        </div>
+
+                        <h3>
+                            Saat vastauksen
+                        </h3>
+
+                        <p>
+                            Vastaan mahdollisimman pian ja
+                            kerron miten asia voidaan hoitaa.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <section
+            class="section"
+            id="sulosta"
+        >
+
+            <div class="container about-grid">
+
+
+                <div class="about-image">
+
+                    <img
+                        src="1.jpeg"
+                        alt="Sulo Rakentaja työssä"
+                        loading="lazy"
+                    >
+
+                    <div class="about-label">
+                        Sulo – Rakentaja
+                    </div>
+
+                </div>
+
+
+                <div class="about-content">
+
+
+                    <div class="section-label">
+                        Miksi minä?
+                    </div>
+
+
+                    <h2>
+                        Yksi kokenut tekijä.
+                        <br>
+                        Selkeä homma.
+                    </h2>
+
+
+                    <p>
+
+                        Teen sovitut työt huolellisesti ja
+                        joustavasti. Minulle on tärkeää,
+                        että työ tehdään kunnolla, ympäristö
+                        pysyy siistinä ja lopputulos on sellainen,
+                        johon voi olla tyytyväinen.
+
+                    </p>
+
+
+                    <div class="about-list">
+
+
+                        <div class="about-item">
+
+                            <div class="about-check">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Yksi yhteyshenkilö
+                                </strong>
+
+                                <span>
+                                    Sinun ei tarvitse koordinoida
+                                    montaa eri tekijää.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="about-item">
+
+                            <div class="about-check">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Siisti työnjälki
+                                </strong>
+
+                                <span>
+                                    Teen työn huolellisesti
+                                    ja pidän työskentelypaikan siistinä.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="about-item">
+
+                            <div class="about-check">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Joustava palvelu
+                                </strong>
+
+                                <span>
+                                    Kerro mitä tarvitset –
+                                    katsotaan toimiva ratkaisu.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="about-item">
+
+                            <div class="about-check">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Maksuton arvio
+                                </strong>
+
+                                <span>
+                                    Työn arviointi ja tarjous
+                                    ovat maksuttomia.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================== -->
+
+        <section id="yhteys">
+
+            <div class="container contact-grid">
+
+
+                <div>
+
+                    <h2 class="contact-title">
+
+                        Onko kotona
+                        tehtävälista?
+
+                    </h2>
+
+
+                    <p class="contact-text">
+
+                        Älä mieti, kuka kaikki työt voisi tehdä.
+
+                        <strong>
+                            Lähetä minulle viesti ja kuva kohteesta.
+                        </strong>
+
+                        Kerro lyhyesti mitä pitäisi tehdä.
+                        Vastaan ja katsotaan yhdessä,
+                        miten asia saadaan hoidettua.
+
+                    </p>
+
+                </div>
+
+
+                <div class="contact-card">
+
+
+                    <div class="contact-card-title">
+                        Ota yhteyttä
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <a
+                        class="contact-link"
+                        href="mailto:sulorakentaja@gmail.com?subject=Työpyyntö%20-%20Sulo%20Rakentaja&body=Hei%20Sulo%2C%0A%0AHaluaisin%20kysyä%20apua%20seuraavaan%20työhön%3A%0A%0A"
+                    >
+
+                        <div class="contact-icon">
+                            ✉
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Sähköposti
+                            </small>
+
+                            <strong>
+                                sulorakentaja@gmail.com
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- WHATSAPP -->
+
+                    <a
+                        class="contact-link"
+                        href="https://wa.me/358413143493?text=Hei%20Sulo!%20Haluaisin%20kysyä%20apua%20remontti-%2C%20korjaus-%20tai%20asennustyöhön.%20Voin%20lähettää%20kuvan%20kohteesta."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="contact-icon">
+                            ◉
+                        </div>
+
+                        <div>
+
+                            <small>
+                                WhatsApp
+                            </small>
+
+                            <strong>
+                                041 314 3493
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- PHONE -->
+
+                    <a
+                        class="contact-link"
+                        href="tel:+358413143493"
+                    >
+
+                        <div class="contact-icon">
+                            ☎
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Puhelin
+                            </small>
+
+                            <strong>
+                                041 314 3493
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- FACEBOOK -->
+
+                    <a
+                        class="contact-link"
+                        href="https://www.facebook.com/profile.php?id=100014846101965"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="contact-icon">
+                            f
+                        </div>
+
+                        <div>
+
+                            <small>
+                                Facebook
+                            </small>
+
+                            <strong>
+                                Sulo Rakentaja
+                            </strong>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <div class="container footer-inner">
+
+
+            <a
+                href="#top"
+                class="footer-brand"
+            >
+
+                <img
+                    src="Logo.jpeg"
+                    alt="Sulo Rakentaja"
+                    class="footer-logo"
+                >
+
+                SULO RAKENTAJA
+
+            </a>
+
+
+            <div class="footer-text">
+
+                Remontti · Korjaus · Maalaus · Asennus · Uusimaa
+
+            </div>
+
+
+            <div class="footer-text">
+
+                © 2026 Sulo Rakentaja
+
+            </div>
+
 
         </div>
 
-      </div>
-    </div>
-  </section>
+    </footer>
 
 
-  <!-- CTA -->
+    <!-- =====================================================
+         MOBILE CONTACT BAR
+    ===================================================== -->
 
-  <section class="cta" id="yhteys">
-    <div class="container">
-
-      <div class="cta-inner">
-
-        <div>
-          <h2>
-            Onko kotona
-            tehtävälista?
-          </h2>
-
-          <p>
-            Älä mieti, kuka kaikki työt voisi tehdä.
-            Lähetä minulle viesti, kuva kohteesta ja lyhyt
-            kuvaus tilanteesta. Vastaan ja katsotaan,
-            miten asia saadaan hoidettua.
-          </p>
-        </div>
+    <div class="mobile-bar">
 
 
-        <div class="contact-card">
+        <!-- EMAIL -->
 
-          <div class="contact-card-title">
-            Ota yhteyttä tavalla, joka sopii sinulle
-          </div>
-
-          <a
-            class="contact-option"
+        <a
             href="mailto:sulorakentaja@gmail.com?subject=Työpyyntö%20-%20Sulo%20Rakentaja"
-          >
-            <div class="contact-icon">✉</div>
-
-            <div>
-              <small>Sähköposti</small>
-              <strong>sulorakentaja@gmail.com</strong>
-            </div>
-          </a>
+            class="mobile-button email"
+        >
+            ✉ Lähetä
+        </a>
 
 
-          <a
-            class="contact-option"
-            href="tel:+358413143493"
-          >
-            <div class="contact-icon">☎</div>
+        <!-- WHATSAPP -->
 
-            <div>
-              <small>Puhelin</small>
-              <strong>041 314 3493</strong>
-            </div>
-          </a>
-
-
-          <a
-            class="contact-option"
-            href="https://wa.me/358413143493"
+        <a
+            href="https://wa.me/358413143493?text=Hei%20Sulo!%20Haluaisin%20kysyä%20apua%20remontti-%2C%20korjaus-%20tai%20asennustyöhön.%20Voin%20lähettää%20kuvan%20kohteesta."
             target="_blank"
-            rel="noopener"
-          >
-            <div class="contact-icon">W</div>
+            rel="noopener noreferrer"
+            class="mobile-button whatsapp"
+        >
+            WhatsApp
+        </a>
 
-            <div>
-              <small>WhatsApp</small>
-              <strong>Lähetä viesti ja kuva</strong>
-            </div>
-          </a>
 
-        </div>
+        <!-- FACEBOOK -->
 
-      </div>
+        <a
+            href="https://www.facebook.com/profile.php?id=100014846101965"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-button facebook"
+        >
+            Facebook
+        </a>
+
 
     </div>
-  </section>
 
-</main>
-
-
-<footer>
-  <div class="container footer-inner">
-
-    <div class="footer-logo">
-      Sulo – Rakentaja
-    </div>
-
-    <div class="footer-text">
-      Remontti · Korjaus · Maalaus · Asennus · Uusimaa
-    </div>
-
-  </div>
-</footer>
 
 </body>
 </html>
-```
